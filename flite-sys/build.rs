@@ -4,7 +4,7 @@ use std::path::PathBuf;
 
 fn main() {
     // Tell cargo to look for shared libraries in the specified directory
-    println!("cargo:rustc-link-search=LD_LIBRARY_PATH");
+    println!("cargo:rustc-link-search=LIBRARY_PATH");
 
     // shared library.
     println!("cargo:rustc-link-lib=flite_cmu_us_kal");
@@ -24,6 +24,14 @@ fn main() {
         // Tell cargo to invalidate the built crate whenever any of the
         // included header files changed.
         .parse_callbacks(Box::new(bindgen::CargoCallbacks))
+        // use unsafe u128 so removed them for now.
+        .blocklist_type("_Float64x")
+        .blocklist_function("strtold")
+        .blocklist_function("qfcvt")
+        .blocklist_function("qfcvt_r")
+        .blocklist_function("qecvt")
+        .blocklist_function("qecvt_r")
+        .blocklist_function("qgcvt")
         // Finish the builder and generate the bindings.
         .generate()
         // Unwrap the Result and panic on failure.

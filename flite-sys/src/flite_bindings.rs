@@ -1492,7 +1492,6 @@ extern "C" {
 pub type _Float32 = f32;
 pub type _Float64 = f64;
 pub type _Float32x = f64;
-pub type _Float64x = u128;
 extern "C" {
     #[link_name = "\u{1}__isoc99_fscanf"]
     pub fn fscanf1(
@@ -2271,12 +2270,6 @@ extern "C" {
         __nptr: *const ::std::os::raw::c_char,
         __endptr: *mut *mut ::std::os::raw::c_char,
     ) -> f32;
-}
-extern "C" {
-    pub fn strtold(
-        __nptr: *const ::std::os::raw::c_char,
-        __endptr: *mut *mut ::std::os::raw::c_char,
-    ) -> u128;
 }
 extern "C" {
     pub fn strtol(
@@ -3976,29 +3969,6 @@ extern "C" {
     ) -> *mut ::std::os::raw::c_char;
 }
 extern "C" {
-    pub fn qecvt(
-        __value: u128,
-        __ndigit: ::std::os::raw::c_int,
-        __decpt: *mut ::std::os::raw::c_int,
-        __sign: *mut ::std::os::raw::c_int,
-    ) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn qfcvt(
-        __value: u128,
-        __ndigit: ::std::os::raw::c_int,
-        __decpt: *mut ::std::os::raw::c_int,
-        __sign: *mut ::std::os::raw::c_int,
-    ) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn qgcvt(
-        __value: u128,
-        __ndigit: ::std::os::raw::c_int,
-        __buf: *mut ::std::os::raw::c_char,
-    ) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
     pub fn ecvt_r(
         __value: f64,
         __ndigit: ::std::os::raw::c_int,
@@ -4011,26 +3981,6 @@ extern "C" {
 extern "C" {
     pub fn fcvt_r(
         __value: f64,
-        __ndigit: ::std::os::raw::c_int,
-        __decpt: *mut ::std::os::raw::c_int,
-        __sign: *mut ::std::os::raw::c_int,
-        __buf: *mut ::std::os::raw::c_char,
-        __len: usize,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn qecvt_r(
-        __value: u128,
-        __ndigit: ::std::os::raw::c_int,
-        __decpt: *mut ::std::os::raw::c_int,
-        __sign: *mut ::std::os::raw::c_int,
-        __buf: *mut ::std::os::raw::c_char,
-        __len: usize,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn qfcvt_r(
-        __value: u128,
         __ndigit: ::std::os::raw::c_int,
         __decpt: *mut ::std::os::raw::c_int,
         __sign: *mut ::std::os::raw::c_int,
